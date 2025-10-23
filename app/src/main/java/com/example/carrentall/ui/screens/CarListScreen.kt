@@ -78,15 +78,15 @@ fun CarListScreen(
             TopAppBar(
                 title = {
                     Column {
-                        Text("Car Rental Manager")
+                        Text("Autóbérlő")
                         if (!isMultiSelectMode) {
                             Text(
-                                text = "$totalCars cars • $availableCars available • $rentedCars rented",
+                                text = "$totalCars autó • $availableCars elérhető • $rentedCars kikölcsönvözve",
                                 style = MaterialTheme.typography.bodySmall
                             )
                         } else {
                             Text(
-                                text = "${selectedCarIds.size} selected",
+                                text = "${selectedCarIds.size} kiválasztva",
                                 style = MaterialTheme.typography.bodySmall
                             )
                         }
@@ -102,10 +102,10 @@ fun CarListScreen(
                         // Multi-select actions
                         if (selectedCarIds.isNotEmpty()) {
                             IconButton(onClick = { showBatchEditDialog = true }) {
-                                Icon(Icons.Default.Edit, contentDescription = "Batch Edit")
+                                Icon(Icons.Default.Edit, contentDescription = "Többszörös Szerkesztés")
                             }
                             IconButton(onClick = { showBatchDeleteDialog = true }) {
-                                Icon(Icons.Default.Delete, contentDescription = "Delete Selected")
+                                Icon(Icons.Default.Delete, contentDescription = "Kiválasztottak Törlése")
                             }
                         }
                         
@@ -143,7 +143,7 @@ fun CarListScreen(
                             onDismissRequest = { showSortMenu = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text("Sort by Brand") },
+                                text = { Text("Rendezés márka alapján") },
                                 onClick = {
                                     viewModel.setSort(CarViewModel.SortOption.BRAND)
                                     showSortMenu = false
@@ -155,7 +155,7 @@ fun CarListScreen(
                                 }
                             )
                             DropdownMenuItem(
-                                text = { Text("Sort by Year") },
+                                text = { Text("Rendezés évjárat alapján") },
                                 onClick = {
                                     viewModel.setSort(CarViewModel.SortOption.YEAR)
                                     showSortMenu = false
@@ -167,7 +167,7 @@ fun CarListScreen(
                                 }
                             )
                             DropdownMenuItem(
-                                text = { Text("Sort by Daily Rate") },
+                                text = { Text("Rendezés napidíj alapján") },
                                 onClick = {
                                     viewModel.setSort(CarViewModel.SortOption.DAILY_RATE)
                                     showSortMenu = false
@@ -179,7 +179,7 @@ fun CarListScreen(
                                 }
                             )
                             DropdownMenuItem(
-                                text = { Text("Sort by Rental Status") },
+                                text = { Text("Rendezés kölcsönzési állapot alapján") },
                                 onClick = {
                                     viewModel.setSort(CarViewModel.SortOption.RENTAL_STATUS)
                                     showSortMenu = false
@@ -201,7 +201,7 @@ fun CarListScreen(
                             onDismissRequest = { showFilterMenu = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text("All Cars") },
+                                text = { Text("Összes autó") },
                                 onClick = {
                                     viewModel.setFilter(CarViewModel.CarFilter.ALL)
                                     showFilterMenu = false
@@ -213,7 +213,7 @@ fun CarListScreen(
                                 }
                             )
                             DropdownMenuItem(
-                                text = { Text("Available Only") },
+                                text = { Text("Csak elérhetőek mutatása") },
                                 onClick = {
                                     viewModel.setFilter(CarViewModel.CarFilter.AVAILABLE)
                                     showFilterMenu = false
@@ -225,7 +225,7 @@ fun CarListScreen(
                                 }
                             )
                             DropdownMenuItem(
-                                text = { Text("Rented Only") },
+                                text = { Text("Csak kölcsönzöttek mutatása") },
                                 onClick = {
                                     viewModel.setFilter(CarViewModel.CarFilter.RENTED)
                                     showFilterMenu = false
@@ -282,14 +282,14 @@ fun CarListScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
-                    placeholder = { Text("Search by brand, model, or license plate...") },
+                    placeholder = { Text("Keress márka, modell vagy rendszám alapján...") },
                     leadingIcon = {
                         Icon(Icons.Default.Search, contentDescription = null)
                     },
                     trailingIcon = {
                         if (searchQuery.isNotEmpty()) {
                             IconButton(onClick = { viewModel.setSearchQuery("") }) {
-                                Icon(Icons.Default.Clear, contentDescription = "Clear search")
+                                Icon(Icons.Default.Clear, contentDescription = "Keresés törlése")
                             }
                         }
                     }
@@ -312,23 +312,23 @@ fun CarListScreen(
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             StatItem(
-                                label = "Total",
+                                label = "Összes",
                                 value = totalCars.toString(),
                                 icon = Icons.Default.DirectionsCar
                             )
                             StatItem(
-                                label = "Available",
+                                label = "Elérhető",
                                 value = availableCars.toString(),
                                 icon = Icons.Default.CheckCircle
                             )
                             StatItem(
-                                label = "Rented",
+                                label = "Kikölcsönözve",
                                 value = rentedCars.toString(),
                                 icon = Icons.Default.Lock
                             )
                             StatItem(
-                                label = "Revenue/Day",
-                                value = "$${String.format("%.0f", totalRevenue)}",
+                                label = "Bevétel / Nap",
+                                value = "${String.format("%.0f", totalRevenue)} HUF",
                                 icon = Icons.Default.AttachMoney
                             )
                         }
@@ -348,11 +348,11 @@ fun CarListScreen(
                         message = if (searchQuery.isNotEmpty()) {
                             "No cars match your search"
                         } else when (currentFilter) {
-                            CarViewModel.CarFilter.AVAILABLE -> "No available cars"
-                            CarViewModel.CarFilter.RENTED -> "No rented cars"
-                            else -> "No cars in your fleet yet"
+                            CarViewModel.CarFilter.AVAILABLE -> "Nincs elérhető autó"
+                            CarViewModel.CarFilter.RENTED -> "Nincs kikölcsönzött autó"
+                            else -> "Nincs autó még a flottádban"
                         },
-                        actionText = if (totalCars == 0) "Add Your First Car" else null,
+                        actionText = if (totalCars == 0) "Add hozzá az első autódat" else null,
                         onActionClick = if (totalCars == 0) { { showAddDialog = true } } else null
                     )
                 } else {
@@ -391,7 +391,7 @@ fun CarListScreen(
     // Add Dialog
     if (showAddDialog) {
         CarDialog(
-            title = "Add New Car",
+            title = "Új Autó Hozzáadása",
             onDismiss = { showAddDialog = false },
             onConfirm = { brand, model, year, color, licensePlate, dailyRate, isRented, notes ->
                 viewModel.addCar(brand, model, year, color, licensePlate, dailyRate, isRented, notes)
@@ -403,7 +403,7 @@ fun CarListScreen(
     // Edit Dialog
     if (showEditDialog && carToEdit != null) {
         CarDialog(
-            title = "Edit Car",
+            title = "Autó Szerkesztése",
             car = carToEdit,
             onDismiss = {
                 showEditDialog = false
@@ -444,9 +444,9 @@ fun CarListScreen(
                     tint = MaterialTheme.colorScheme.error
                 )
             },
-            title = { Text("Delete Car?") },
+            title = { Text("Autó Kitörlése?") },
             text = {
-                Text("Are you sure you want to delete ${carToDelete?.brand} ${carToDelete?.model}? This action cannot be undone.")
+                Text("Biztosan ki szeretnéd törölni ${carToDelete?.brand} ${carToDelete?.model}-t? Ez a művelet nem visszafordítható.")
             },
             confirmButton = {
                 Button(
@@ -459,7 +459,7 @@ fun CarListScreen(
                         containerColor = MaterialTheme.colorScheme.error
                     )
                 ) {
-                    Text("Delete")
+                    Text("Törlés")
                 }
             },
             dismissButton = {
@@ -469,7 +469,7 @@ fun CarListScreen(
                         carToDelete = null
                     }
                 ) {
-                    Text("Cancel")
+                    Text("Mégse")
                 }
             }
         )
@@ -498,9 +498,9 @@ fun CarListScreen(
                     tint = MaterialTheme.colorScheme.error
                 )
             },
-            title = { Text("Delete Selected Cars?") },
+            title = { Text("Törlöd a kiválasztott autókat?") },
             text = {
-                Text("Are you sure you want to delete ${selectedCarIds.size} selected car(s)? This action cannot be undone.")
+                Text("Biztosan ki szeretnél törölni ${selectedCarIds.size} autót? Ez a művelet visszafordíthatatlan.")
             },
             confirmButton = {
                 Button(
@@ -512,12 +512,12 @@ fun CarListScreen(
                         containerColor = MaterialTheme.colorScheme.error
                     )
                 ) {
-                    Text("Delete All")
+                    Text("Törlés")
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showBatchDeleteDialog = false }) {
-                    Text("Cancel")
+                    Text("Mégse")
                 }
             }
         )
@@ -534,9 +534,9 @@ fun CarListScreen(
                     tint = MaterialTheme.colorScheme.error
                 )
             },
-            title = { Text("Delete ALL Cars?") },
+            title = { Text("Biztosan kitörlöd az ÖSSZES autót?") },
             text = {
-                Text("⚠️ WARNING: This will permanently delete ALL $totalCars cars from the database. This action cannot be undone!")
+                Text("⚠️ FIGYELEM: Ez a művelet véglegesen kitöröl $totalCars autót az adatbázisból. Ez a művelet nem visszavonható!")
             },
             confirmButton = {
                 Button(
@@ -548,12 +548,12 @@ fun CarListScreen(
                         containerColor = MaterialTheme.colorScheme.error
                     )
                 ) {
-                    Text("Delete Everything")
+                    Text("Minden Törlése")
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDeleteAllDialog = false }) {
-                    Text("Cancel")
+                    Text("Mégse")
                 }
             }
         )

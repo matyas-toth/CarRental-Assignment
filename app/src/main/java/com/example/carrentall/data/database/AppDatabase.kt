@@ -53,51 +53,51 @@ abstract class AppDatabase : RoomDatabase() {
                     brand = "Toyota",
                     model = "Camry",
                     year = 2023,
-                    color = "Silver",
+                    color = "Ezüst",
                     licensePlate = "ABC-1234",
-                    dailyRate = 45.99,
+                    dailyRate = 10000.00,
                     isRented = false,
-                    notes = "Fuel efficient sedan, perfect for city driving"
+                    notes = "Alacsony fogyasztású sedan, városon belüli közlekedéshez tökéletes"
                 ),
                 CarItem(
                     brand = "Ford",
                     model = "Mustang",
                     year = 2022,
-                    color = "Red",
+                    color = "Vörös",
                     licensePlate = "XYZ-5678",
-                    dailyRate = 89.99,
+                    dailyRate = 25000.00,
                     isRented = true,
-                    notes = "Sports car with powerful V8 engine"
+                    notes = "Sportautó V8-as motorral"
                 ),
                 CarItem(
                     brand = "Honda",
                     model = "Civic",
                     year = 2024,
-                    color = "Blue",
+                    color = "Kék",
                     licensePlate = "DEF-9012",
-                    dailyRate = 39.99,
+                    dailyRate = 8999.99,
                     isRented = false,
-                    notes = "Compact and reliable daily driver"
+                    notes = "Kompakt és megbízható mindennapi autó"
                 ),
                 CarItem(
                     brand = "Tesla",
                     model = "Model 3",
                     year = 2023,
-                    color = "White",
+                    color = "Fehér",
                     licensePlate = "ELE-2024",
-                    dailyRate = 129.99,
+                    dailyRate = 32000.99,
                     isRented = false,
-                    notes = "Electric vehicle with autopilot features"
+                    notes = "Elektromos autó önvezetéssel"
                 ),
                 CarItem(
                     brand = "Chevrolet",
                     model = "Suburban",
                     year = 2023,
-                    color = "Black",
+                    color = "Fekete",
                     licensePlate = "SUV-7890",
-                    dailyRate = 95.00,
+                    dailyRate = 19999.00,
                     isRented = true,
-                    notes = "Large SUV, great for family trips"
+                    notes = "Nagy SUV családi kirándulásokhoz"
                 )
             )
             

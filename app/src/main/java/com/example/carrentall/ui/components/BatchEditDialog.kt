@@ -36,7 +36,7 @@ fun BatchEditDialog(
                     tint = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Batch Edit $selectedCount Car(s)")
+                Text("$selectedCount Autó Szerkesztése")
             }
         },
         text = {
@@ -44,7 +44,7 @@ fun BatchEditDialog(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Leave fields empty to keep existing values",
+                    text = "Az üresen hagyott mezők kihagyásra kerülnek",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -58,11 +58,11 @@ fun BatchEditDialog(
                         dailyRateText = it
                         dailyRateError = null
                     },
-                    label = { Text("New Daily Rate ($)") },
+                    label = { Text("Új Napidíj (HUF)") },
                     leadingIcon = {
                         Icon(Icons.Default.AttachMoney, contentDescription = null)
                     },
-                    placeholder = { Text("Leave empty to skip") },
+                    placeholder = { Text("Hagyd üresen a kihagyáshoz") },
                     isError = dailyRateError != null,
                     supportingText = dailyRateError?.let { { Text(it) } },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -78,11 +78,11 @@ fun BatchEditDialog(
                         colorText = it
                         colorError = null
                     },
-                    label = { Text("New Color") },
+                    label = { Text("Új Szín") },
                     leadingIcon = {
                         Icon(Icons.Default.ColorLens, contentDescription = null)
                     },
-                    placeholder = { Text("Leave empty to skip") },
+                    placeholder = { Text("Hagyd üresen a kihagyáshoz") },
                     isError = colorError != null,
                     supportingText = colorError?.let { { Text(it) } },
                     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
@@ -93,7 +93,7 @@ fun BatchEditDialog(
                 
                 // Rental Status
                 Text(
-                    text = "Rental Status",
+                    text = "Kikölcsönzési Állapot",
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -107,14 +107,14 @@ fun BatchEditDialog(
                     FilterChip(
                         selected = rentalStatus == null,
                         onClick = { rentalStatus = null },
-                        label = { Text("No Change") },
+                        label = { Text("Ugyanaz") },
                         modifier = Modifier.weight(1f)
                     )
                     
                     FilterChip(
                         selected = rentalStatus == false,
                         onClick = { rentalStatus = false },
-                        label = { Text("Available") },
+                        label = { Text("Elérhető") },
                         leadingIcon = {
                             if (rentalStatus == false) {
                                 Icon(Icons.Default.CheckCircle, contentDescription = null, modifier = Modifier.size(18.dp))
@@ -126,7 +126,7 @@ fun BatchEditDialog(
                     FilterChip(
                         selected = rentalStatus == true,
                         onClick = { rentalStatus = true },
-                        label = { Text("Rented") },
+                        label = { Text("Kikölcsönözve") },
                         leadingIcon = {
                             if (rentalStatus == true) {
                                 Icon(Icons.Default.Lock, contentDescription = null, modifier = Modifier.size(18.dp))
@@ -147,7 +147,7 @@ fun BatchEditDialog(
                     } else {
                         val rate = dailyRateText.toDoubleOrNull()
                         if (rate == null) {
-                            dailyRateError = "Please enter a valid rate"
+                            dailyRateError = "Egy normális számot írj be"
                             hasError = true
                             null
                         } else {
@@ -186,12 +186,12 @@ fun BatchEditDialog(
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
-                Text("Update All")
+                Text("Autók Frissítése")
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text("Mégse")
             }
         }
     )

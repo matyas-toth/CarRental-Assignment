@@ -66,7 +66,7 @@ fun CarDialog(
                         brand = it
                         brandError = null
                     },
-                    label = { Text("Brand *") },
+                    label = { Text("Márka *") },
                     leadingIcon = {
                         Icon(Icons.Default.DirectionsCar, contentDescription = null)
                     },
@@ -85,7 +85,7 @@ fun CarDialog(
                         model = it
                         modelError = null
                     },
-                    label = { Text("Model *") },
+                    label = { Text("Modell *") },
                     leadingIcon = {
                         Icon(Icons.Default.CarRental, contentDescription = null)
                     },
@@ -104,7 +104,7 @@ fun CarDialog(
                         yearText = it
                         yearError = null
                     },
-                    label = { Text("Year *") },
+                    label = { Text("Évjárat *") },
                     leadingIcon = {
                         Icon(Icons.Default.CalendarToday, contentDescription = null)
                     },
@@ -123,7 +123,7 @@ fun CarDialog(
                         color = it
                         colorError = null
                     },
-                    label = { Text("Color *") },
+                    label = { Text("Szín *") },
                     leadingIcon = {
                         Icon(Icons.Default.ColorLens, contentDescription = null)
                     },
@@ -142,7 +142,7 @@ fun CarDialog(
                         licensePlate = it.uppercase()
                         licensePlateError = null
                     },
-                    label = { Text("License Plate *") },
+                    label = { Text("Rendszám *") },
                     leadingIcon = {
                         Icon(Icons.Default.CreditCard, contentDescription = null)
                     },
@@ -163,7 +163,7 @@ fun CarDialog(
                         dailyRateText = it
                         dailyRateError = null
                     },
-                    label = { Text("Daily Rate ($) *") },
+                    label = { Text("Napidíj (HUF) *") },
                     leadingIcon = {
                         Icon(Icons.Default.AttachMoney, contentDescription = null)
                     },
@@ -191,7 +191,7 @@ fun CarDialog(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Currently Rented",
+                            text = "Kikölcsönözve",
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }
@@ -207,7 +207,7 @@ fun CarDialog(
                 OutlinedTextField(
                     value = notes,
                     onValueChange = { notes = it },
-                    label = { Text("Notes (Optional)") },
+                    label = { Text("Jegyzetek (Nem kötelező)") },
                     leadingIcon = {
                         Icon(Icons.Default.Notes, contentDescription = null)
                     },
@@ -220,7 +220,7 @@ fun CarDialog(
                 Spacer(modifier = Modifier.height(8.dp))
                 
                 Text(
-                    text = "* Required fields",
+                    text = "* Kötelező mezők",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -300,12 +300,12 @@ fun CarDialog(
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(if (car == null) "Add Car" else "Update Car")
+                Text(if (car == null) "Autó Hozzáadása" else "Autó Frissítése")
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text("Mégse")
             }
         }
     )

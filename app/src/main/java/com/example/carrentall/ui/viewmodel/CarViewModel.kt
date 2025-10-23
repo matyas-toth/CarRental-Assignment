@@ -188,7 +188,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
                 )
                 
                 repository.insertCar(car)
-                _successMessage.value = "Car added successfully!"
+                _successMessage.value = "Autó sikeresen hozzáadva!"
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to add car: ${e.message}"
             } finally {
@@ -214,7 +214,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
                 }
                 
                 repository.updateCar(car)
-                _successMessage.value = "Car updated successfully!"
+                _successMessage.value = "Autó sikeresen frissítve!"
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to update car: ${e.message}"
             } finally {
@@ -228,7 +228,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 _isLoading.value = true
                 repository.deleteCar(car)
-                _successMessage.value = "Car deleted successfully!"
+                _successMessage.value = "Autó sikeresen törölve!"
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to delete car: ${e.message}"
             } finally {
@@ -243,7 +243,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
                 _isLoading.value = true
                 val carsToDelete = cars.value.filter { _selectedCarIds.value.contains(it.id) }
                 repository.deleteCars(carsToDelete)
-                _successMessage.value = "${carsToDelete.size} car(s) deleted successfully!"
+                _successMessage.value = "${carsToDelete.size} autó sikeresen törölve!"
                 exitMultiSelectMode()
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to delete cars: ${e.message}"
@@ -258,7 +258,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 _isLoading.value = true
                 repository.deleteAllCars()
-                _successMessage.value = "All cars deleted successfully!"
+                _successMessage.value = "Összes autó sikeresen törölve!"
                 exitMultiSelectMode()
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to delete all cars: ${e.message}"
@@ -287,7 +287,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 
                 repository.updateMultipleCars(carsToUpdate)
-                _successMessage.value = "${carsToUpdate.size} car(s) updated successfully!"
+                _successMessage.value = "${carsToUpdate.size} autó sikeresen frissítve!"
                 exitMultiSelectMode()
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to update cars: ${e.message}"

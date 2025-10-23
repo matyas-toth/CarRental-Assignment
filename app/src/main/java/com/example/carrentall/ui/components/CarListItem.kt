@@ -163,7 +163,7 @@ fun CarListItem(
                         color = AccentOrange.copy(alpha = 0.1f)
                     ) {
                         Text(
-                            text = "$${String.format("%.2f", car.dailyRate)}/day",
+                            text = "${String.format("%.2f", car.dailyRate)} HUF / nap",
                             style = MaterialTheme.typography.labelLarge,
                             fontWeight = FontWeight.Bold,
                             color = AccentOrange,
@@ -176,7 +176,7 @@ fun CarListItem(
                         onClick = onToggleRental,
                         label = {
                             Text(
-                                text = if (car.isRented) "Rented" else "Available",
+                                text = if (car.isRented) "Kikölcsönözve" else "Elérhető",
                                 style = MaterialTheme.typography.labelSmall
                             )
                         },
@@ -231,7 +231,7 @@ fun CarListItem(
                                 modifier = Modifier.size(18.dp)
                             )
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Edit")
+                            Text("Szerkesztés")
                         }
                         
                         // Delete button
@@ -248,7 +248,7 @@ fun CarListItem(
                                 modifier = Modifier.size(18.dp)
                             )
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Delete")
+                            Text("Törlés")
                         }
                     }
                 }
