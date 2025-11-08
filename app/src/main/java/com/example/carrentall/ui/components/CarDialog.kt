@@ -246,7 +246,7 @@ fun CarDialog(
                     
                     val year = yearText.toIntOrNull()
                     if (year == null) {
-                        yearError = "Please enter a valid year"
+                        yearError = "Kérlek egy valós évet adj meg"
                         hasError = true
                     } else {
                         val yearValidation = CarItem.validateYear(year)
@@ -270,7 +270,7 @@ fun CarDialog(
                     
                     val dailyRate = dailyRateText.toDoubleOrNull()
                     if (dailyRate == null) {
-                        dailyRateError = "Please enter a valid rate"
+                        dailyRateError = "Kérlek egy valós napidíjat adj meg"
                         hasError = true
                     } else {
                         val dailyRateValidation = CarItem.validateDailyRate(dailyRate)
